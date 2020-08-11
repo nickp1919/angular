@@ -8,19 +8,19 @@
         <table class="table table-bordered ">
           <thead class="thead-dark">
             <tr>
-              <th style="vertical-align: middle" *ngFor="let x of headers; let i = index" [ngClass]="display[x]?'off': ''" [attr.rowspan]="!colspan[x]?2:''" [attr.colspan]="colspan[x]" >
+              <th style="vertical-align: middle" *ngFor="let x of headers" [class.off]="display[x]" [attr.rowspan]="!colspan[x]?2:''" [attr.colspan]="colspan[x]" >
                   {{x}}
               </th>
             </tr>
             <tr>
-              <th *ngFor="let k of subheaders" [ngClass]="display[k]?'off': ''">
+              <th *ngFor="let k of subheaders" [class.off]="display[k]">
                 {{k}}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let d of data; let i = index" >
-              <td *ngFor="let k of keyfordata; let i = index" [ngClass]="display[k]?'off': ''">
+            <tr *ngFor="let d of data" >
+              <td *ngFor="let k of keysForData" [class.off]="display[k]">
                 {{d[k]?d[k]:'-'}}
               </td>
             </tr>
@@ -29,21 +29,21 @@
       </div>
       <div class="col">
         <ul>
-          <li *ngFor="let x of namecheckbox; let i = index">
+          <li *ngFor="let x of nameCheckbox">
             <div class="btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-secondary active" *ngIf="!x['sub-head']; else checkbsubhead">
-                <input type="checkbox" (click)="displayOffHeads($event, x.name)" [checked]="setchecked[x.name]">{{x.name}}
+              <label class="btn btn-secondary active" *ngIf="!x['sub-head']; else checkSubhead">
+                <input type="checkbox" (click)="displayOffHeads($event, x.name)" [checked]="setChecked[x.name]">{{x.name}}
               </label>
             </div>
-            <ng-template #checkbsubhead>
-              <label [ngClass]="setchecked[x.name]?btn[0]:btn[1]">
-                <input type="checkbox" (click)="displayOffHeadandSub($event, x.name, x['sub-head'])" [checked]="setchecked[x.name]">{{x.name}}
+            <ng-template #checkSubhead>
+              <label [ngClass]="setChecked[x.name]?btn[0]:btn[1]">
+                <input type="checkbox" (click)="displayOffHeadAndSub($event, x.name, x['sub-head'])" [checked]="setChecked[x.name]">{{x.name}}
               </label>
               <ul>
-                <li *ngFor="let z of x['sub-head']; let i = index">
+                <li *ngFor="let z of x['sub-head']">
                   <div class="btn-group-toggle" data-toggle="buttons">
-                    <label [ngClass]="setchecked[z.name]?btn[0]:btn[1]">
-                      <input type="checkbox" (click)="displayOffSub($event, z.name, x.name)" [checked]="setchecked[z.name]">{{z.name}}
+                    <label [ngClass]="setChecked[z.name]?btn[0]:btn[1]">
+                      <input type="checkbox" (click)="displayOffSub($event, z.name, x.name)" [checked]="setChecked[z.name]">{{z.name}}
                     </label>
                   </div>
                 </li>
