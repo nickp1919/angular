@@ -1,5 +1,5 @@
 # Table
-My first test project for mastering the Angular framework. In this project, a table is generated from a static JSON file with as well as filters for columns
+My first test project in Angular framework. In this project, a table is created from a static JSON file with filters for the columns.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
 
 ## Development server
